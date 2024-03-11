@@ -1,0 +1,25 @@
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid;
+    padding: 1rem;
+}
+
+.sidebar {
+display: flex;
+flex-direction:column;
+border: 1px solid;
+width: 60px;
+margin-top: 1rem;
+padding: 0.5rem;
+height: 90vh;
+}
+
+.sidebar-list {
+    padding-left: 0rem;
+}
+
+.article-card {
+    border: 1px solid;
+}
