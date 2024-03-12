@@ -1,0 +1,38 @@
+.comments-container ul {
+    padding-left: 0;
+}
+
+.submit-comments {
+    /* border: 1px solid; */
+    border-radius: 0.4rem;
+    background-color: rgb(206, 239, 250);
+    color: black;
+}
+
+.submit-comments > * {
+    margin: 0.5rem 1rem ;
+}
+
+.submit-comments input {
+    border: 1px;
+    border-radius: 0.4rem;
+    height: 1.4rem;
+    width: 50%;
+}
+
+.comment-card {
+    /* border: 1px solid; */
+    border-radius: 0.4rem;
+    margin-bottom: 1rem;
+    padding: 0 0.6rem 0.6rem 0.6rem;
+    background-color: rgb(206, 239, 250);
+    color: black;   
+}
+
+.comment-card div {
+    display: flex;
+    justify-content: space-between;
+}
+.comment-card p {
+    margin: 0.5rem;
+}

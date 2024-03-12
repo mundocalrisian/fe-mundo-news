@@ -14,6 +14,10 @@ body {
     grid-template-rows: 120px  auto;
 }
 
+h1 {
+    font-size: xxx-large;
+}
+
 button {
     padding: 0.6rem;
     border-radius: 0.3rem;
@@ -29,4 +33,8 @@ select {
 a {
     text-decoration: none;
     color: #eee;
+}
+
+.bold-text {
+    font-weight: bold;
 }

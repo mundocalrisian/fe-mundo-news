@@ -1,12 +1,12 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { Routes, Route} from 'react-router-dom'
-import { getAllTopics, getAllUsers } from './utils/api'
-import Header from './components/header'
-import { Sidebar } from './components/sidebar'
-import ShowAllArticles from './components/show-all-articles'
-import Home from './components/home'
-import SingleArticle from './components/single-article'
+import { getAllTopics, getAllUsers } from '../../utils/api'
+import Header from '../header'
+import { Sidebar } from '../sidebar'
+import ShowAllArticles from '../articles/show-all-articles'
+import Home from '../home'
+import SingleArticle from '../articles/single-article'
 
 function App () {
   const [allUsers, setAllUers] = useState([])
