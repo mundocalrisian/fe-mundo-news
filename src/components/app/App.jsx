@@ -7,6 +7,8 @@ import { Sidebar } from '../sidebar'
 import ShowAllArticles from '../articles/show-all-articles'
 import Home from '../home'
 import SingleArticle from '../articles/single-article'
+import { UserContext } from '../../context/user'
+import { Login } from '../user/login'
 
 function App () {
   const [allUsers, setAllUers] = useState([])
@@ -20,15 +22,18 @@ function App () {
 
 
   return (
-    <section className='grid-container'>
-      <Header user={user}/>
-      <Sidebar allTopics={allTopics}/>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/articles' element={<ShowAllArticles allTopics={allTopics}/>} />
-        <Route path='/article/:article_id' element={<SingleArticle/>}/>
-      </Routes>
-    </section>
+    <UserContext.Provider value={{user, setUser}}>
+      <section className='grid-container'>
+        <Header/>
+        <Sidebar allTopics={allTopics}/>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/articles' element={<ShowAllArticles allTopics={allTopics}/>} />
+          <Route path='/article/:article_id' element={<SingleArticle/>}/>
+          <Route path='/login' element={<Login/>}/>
+        </Routes>
+      </section>
+    </UserContext.Provider>
       
   )
 }

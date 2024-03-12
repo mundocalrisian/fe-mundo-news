@@ -53,14 +53,34 @@ flex-direction:column; */
     display: flex;
     justify-content: space-between;
     margin-top: 0.6rem;
+    margin-bottom: 0;
     font-size: smaller;
     
 }
 
 .article-card-votes {
     display: flex;
+    background-color: #eee;
+    border: 0;
+    height: 2.4rem;
+    border-radius: 2rem;
+    color: black;
+    
+}
+.article-card-votes img{
+    width: 2rem;
+    padding: 0.2rem;
+    border: 0px solid;
+}
+.article-card-votes p {
+    margin-bottom: 0;   
+}
+.article-card-votes input {
+    padding: 0.2rem;   
 }
 
 .article-card-votes > * {
-    margin-left: 2rem;
+    /* margin-left: 1rem; */
+    border: 0px;
 }
+

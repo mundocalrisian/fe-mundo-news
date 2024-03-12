@@ -1,13 +1,16 @@
 import { useParams } from "react-router-dom";
-import { ShowArticleCard } from "./show-article-card";
 import { useEffect, useState } from "react";
 import { getArticleById } from "../../utils/api";
 import { capitaliseFirstLetter, dateToLocal } from "../../utils/utils";
 import { ShowAllComments } from "../comments/show-all-comments";
+import { patchCommentVote } from "../../utils/api";
+import upArrow from '../../assets/arrow-round-top-icon.svg'
+import downArrow from '../../assets/arrow-round-bottom-icon.svg'
 
 export default function SingleArticle () {
     const [soloArticle, setSoloArticle] = useState({})
     const [isFetching, setIsFetching] = useState(true)
+    const [articleVotes, setArticleVotes] = useState(soloArticle.votes)
     
     const articleId = useParams().article_id
     
@@ -15,9 +18,28 @@ export default function SingleArticle () {
         getArticleById(articleId)
         .then((article) => {
             setSoloArticle(article)
+            setArticleVotes(article.votes)
             setIsFetching(false)
         })
     }, [])
+
+    function handleUpVote(article_id) {
+        event.preventDefault()
+        patchCommentVote(article_id, 1)
+        .then((result) => {
+            // console.log(result.votes);
+            setArticleVotes(result.votes)
+        })
+    }
+
+    function handleDownVote (article_id) {
+        event.preventDefault()
+        patchCommentVote(article_id, -1)
+        .then((result) => {
+            // console.log(result.votes);
+            setArticleVotes(result.votes)
+        })
+    }
 
     if (isFetching) {
         return (
@@ -37,11 +59,11 @@ export default function SingleArticle () {
             <p>{soloArticle.body}</p>
             <div className="article-card-comments">
                 <p>Comments: {soloArticle.comment_count}</p>
-                <div className="article-card-votes">
-                    <p>Votes {soloArticle.votes}</p>
-                    <button>Like</button>
-                </div>
-
+                <form className="article-card-votes">
+                    <input onClick={(event) => { handleUpVote(articleId)}} type="image" src={upArrow} name="up-vote" method="post"/>
+                    <p>&#160;Votes: {articleVotes} &#160;</p>
+                    <input onClick={(event) => {handleDownVote(articleId)}} type="image" src={downArrow} name="down-vote" method="post"/>
+                </form>
             </div>
         </section>
         <ShowAllComments />
