@@ -4,7 +4,7 @@ export default function Header ({user}) {
     
     return (
         <section className="main-header">
-            <h1>NC NEWS</h1>
+            <h1><a href="/">NC NEWS</a></h1>
             <div>
                 <button>Add article</button>
             </div>
