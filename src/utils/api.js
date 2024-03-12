@@ -24,3 +24,10 @@ export function getAllArticles () {
         return results.data.articles
     })
 }
+
+export function getArticleById (articleId) {
+    return ncNewsApi.get(`/articles/${articleId}`)
+    .then((result) => {
+        return result.data.article
+    })
+}

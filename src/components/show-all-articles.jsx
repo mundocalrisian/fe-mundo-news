@@ -12,7 +12,6 @@ export default function ShowAllArticles ({allTopics}) {
 
     return (
         <section className="articles-container">
-            {/* <h2>All articles</h2> */}
             <select name="Sort By" id="">
                 <option value="Topic">Date (Ascending)</option>
                 <option value="Topic">Date (Descending)</option>
