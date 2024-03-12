@@ -3,6 +3,25 @@ body {
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    background-color: #eeee;
-  }
-  
+    background-color: #535350ee;
+    color: #ffff;
+    
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 120px auto;
+    grid-template-rows: 120px  auto;
+}
+
+button {
+    padding: 0.6rem;
+    border-radius: 0.3rem;
+    background-color: rgb(197, 197, 197);
+    color: black
+}
+
+select {
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+}

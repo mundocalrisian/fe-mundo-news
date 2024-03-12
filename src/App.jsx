@@ -18,9 +18,11 @@ function App () {
 
   return (
     <>
+    <section className='grid-container'>
     <Header user={user}/>
     <Sidebar allTopics={allTopics}/>
     <ShowAllArticles allTopics={allTopics}/>
+    </section>
     </>
   )
 }
