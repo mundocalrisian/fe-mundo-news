@@ -31,3 +31,10 @@ export function getArticleById (articleId) {
         return result.data.article
     })
 }
+
+export function getAllComments (articleId) {
+    return ncNewsApi.get(`/articles/${articleId}/comments`)
+    .then((results) => {
+        return results.data.comments
+    })
+}
