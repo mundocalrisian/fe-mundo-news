@@ -7,27 +7,28 @@ export default function ShowAllArticles ({allTopics}) {
 
     useEffect(() => {
         getAllArticles()
-        .then((data) => {
-            // console.log(data);
-            setAllArticles(data)           
-        })
+        .then((data) => setAllArticles(data))
     }, [])
 
     return (
-        <section>
-            <h2>All articles</h2>
+        <section className="articles-container">
+            {/* <h2>All articles</h2> */}
             <select name="Sort By" id="">
-            <option value="Topic">Topic Sort By</option>
+                <option value="Topic">Date (Ascending)</option>
+                <option value="Topic">Date (Descending)</option>
+                <option value="Topic">Comment Count (Ascending)</option>
+                <option value="Topic">Comment Count (Descending)</option>
+                <option value="Topic">Votes (Ascending)</option>
+                <option value="Topic">Votes (Descending)</option>
             </select>
-            {allArticles.map((article) => {
-                
+                {allArticles.map((article) => {
                 return (
                     <div key={article.article_id} className="article-card">
                         <ShowArticleCard article={article}/>
                     </div>
                 )
-            })}
-        </section>
+                })}
+            </section>
     )
 
 }
