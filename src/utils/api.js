@@ -38,3 +38,14 @@ export function getAllComments (articleId) {
         return results.data.comments
     })
 }
+
+export function patchCommentVote (articleId, vote) {
+    // console.log(articleId);
+    // console.log(vote);
+    const postBody = {inc_votes: vote}
+    return ncNewsApi.patch(`/articles/${articleId}`, postBody)
+    .then((result) => {
+        // console.log(result.data.updated_article, "---coming back");
+        return result.data.updated_article
+    })
+}
