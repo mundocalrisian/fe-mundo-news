@@ -6,11 +6,14 @@ import { ShowAllComments } from "../comments/show-all-comments";
 import { patchCommentVote } from "../../utils/api";
 import upArrow from '../../assets/arrow-round-top-icon.svg'
 import downArrow from '../../assets/arrow-round-bottom-icon.svg'
+import { Login } from "../user/login";
 
 export default function SingleArticle () {
     const [soloArticle, setSoloArticle] = useState({})
     const [isFetching, setIsFetching] = useState(true)
     const [articleVotes, setArticleVotes] = useState(soloArticle.votes)
+    const [isUpClicked, setIsUpClicked] = useState(false)
+    const [isDownClicked, setIsDownClicked] = useState(false)
     
     const articleId = useParams().article_id
     
@@ -60,9 +63,9 @@ export default function SingleArticle () {
             <div className="article-card-comments">
                 <p>Comments: {soloArticle.comment_count}</p>
                 <form className="article-card-votes">
-                    <input onClick={(event) => { handleUpVote(articleId)}} type="image" src={upArrow} name="up-vote" method="post"/>
+                    <input disabled={isUpClicked} onClick={(event) => { handleUpVote(articleId); setIsUpClicked(true)}} type="image" src={upArrow} name="up-vote" method="post"/>
                     <p>&#160;Votes: {articleVotes} &#160;</p>
-                    <input onClick={(event) => {handleDownVote(articleId)}} type="image" src={downArrow} name="down-vote" method="post"/>
+                    <input disabled={isDownClicked} onClick={(event) => {handleDownVote(articleId); setIsDownClicked(true)}} type="image" src={downArrow} name="down-vote" method="post"/>
                 </form>
             </div>
         </section>

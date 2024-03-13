@@ -20,7 +20,7 @@ export function ShowAllComments () {
     if (isFetching) {
         return (
         <div>
-            <p>Fetching articles...</p>
+            <p>Fetching comments...</p>
         </div>
         ) 
     }

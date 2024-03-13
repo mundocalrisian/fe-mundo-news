@@ -22,6 +22,9 @@ export function Login () {
 
 // then set condtional only allowing vote if user is logged in and not guest
 // then use the logged user to input author field for comments body
+// comment field should be required
 // body should look like - 
 // {"author": "icellusedkars", "body": "We will see about that!"}
 // comments are returned with most recent first 
+// render optimistically
+// give some sort of successfull popup?
