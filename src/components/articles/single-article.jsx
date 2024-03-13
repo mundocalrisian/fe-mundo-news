@@ -30,7 +30,6 @@ export default function SingleArticle () {
         event.preventDefault()
         patchCommentVote(article_id, 1)
         .then((result) => {
-            // console.log(result.votes);
             setArticleVotes(result.votes)
         })
     }
@@ -39,7 +38,6 @@ export default function SingleArticle () {
         event.preventDefault()
         patchCommentVote(article_id, -1)
         .then((result) => {
-            // console.log(result.votes);
             setArticleVotes(result.votes)
         })
     }
