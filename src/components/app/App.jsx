@@ -9,6 +9,7 @@ import Home from '../home'
 import SingleArticle from '../articles/single-article'
 import { UserContext, UserProvider } from '../../context/user'
 import { Login } from '../user/login'
+import ShowTopicArticles from '../articles/show-topic-articles'
 
 function App () {
   const [allUsers, setAllUers] = useState([])
@@ -27,6 +28,7 @@ function App () {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/articles' element={<ShowAllArticles allTopics={allTopics}/>} />
+          <Route path='/articles/:topic' element={<ShowTopicArticles allTopics={allTopics}/>} />
           <Route path='/article/:article_id' element={<SingleArticle/>}/>
           <Route path='/login' element={<Login/>}/>
         </Routes>

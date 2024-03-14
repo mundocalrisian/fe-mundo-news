@@ -25,6 +25,13 @@ export function getAllArticles () {
     })
 }
 
+export function getTopicArticles (topic) {
+    return ncNewsApi.get(`/articles?topic=${topic.toLowerCase()}`)
+    .then((results) => {
+        return results.data.articles
+    })
+}
+
 export function getArticleById (articleId) {
     return ncNewsApi.get(`/articles/${articleId}`)
     .then((result) => {
@@ -60,7 +67,6 @@ export function patchCommentVote (articleId, vote) {
 export function deleteComment (commentId) {
     return ncNewsApi.delete(`/comments/${commentId}`)
     .then((result)=>{
-        console.log(result);
         return result.status
     })
 }
