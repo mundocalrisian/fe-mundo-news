@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getTopicArticles } from "../../utils/api";
 import { ShowArticleCard } from "./show-article-card";
 import { useParams } from "react-router-dom";
 import { ShareButtons } from "../share/share-buttons";
 import Select from 'react-select'
 import { sortByCommentCountAsc, sortByCommentCountDesc, sortByCreatedAsc, sortByCreatedDesc, sortByVotesAsc, sortByVotesDesc } from "../../utils/sort-by"
+import { SidebarContext } from "../../context/sidebar";
 
 export default function ShowTopicArticles ({allTopics}) {
     const [topicArticles, setTopicArticles] = useState([])
     const [isFetching, setIsFetching] = useState(true)
     const [sortByOption, setSortByOption] = useState({value: 'DateDesc', label: 'Sort by most recent'})
-    // console.log(sortByOption, "sortby");
+    const {isSidebarOpen} = useContext(SidebarContext)
+
+    const articlesContainerClass = !isSidebarOpen ? "articles-container open" : "articles-container"
 
     const topic = useParams().topic
 
@@ -74,7 +77,7 @@ export default function ShowTopicArticles ({allTopics}) {
         )
     } else {
         return (
-            <section className="articles-container">
+            <section className={articlesContainerClass}>
                 <Select 
                     className="sort-by-dropdown" 
                     options={options}

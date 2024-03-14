@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAllArticles } from "../../utils/api";
 import { ShowArticleCard } from "./show-article-card";
 import { ShareButtons } from "../share/share-buttons";
 import Select from 'react-select'
 import { sortByCommentCountAsc, sortByCommentCountDesc, sortByCreatedAsc, sortByCreatedDesc, sortByVotesAsc, sortByVotesDesc } from "../../utils/sort-by"
+import { SidebarContext } from "../../context/sidebar";
 
 export default function ShowAllArticles ({allTopics}) {
     const [allArticles, setAllArticles] = useState([])
     const [isFetching, setIsFetching] = useState(true)
     const [sortByOption, setSortByOption] = useState({value: 'DateDesc', label: 'Sort by most recent'})
+    const {isSidebarOpen} = useContext(SidebarContext)
+
+    const articlesContainerClass = !isSidebarOpen ? "articles-container open" : "articles-container"
     
     useEffect(() => {
         getAllArticles()
@@ -19,7 +23,7 @@ export default function ShowAllArticles ({allTopics}) {
             setAllArticles(data)
             setIsFetching(false)
         })
-    }, [])
+    }, [isSidebarOpen])
 
     const options = [
         {value:"DateDesc", label: "Sort by most recent"}, 
@@ -70,7 +74,7 @@ export default function ShowAllArticles ({allTopics}) {
         ) 
     } else {
     return (
-        <section className="articles-container">
+        <section className={articlesContainerClass}>
             <Select 
                     className="sort-by-dropdown" 
                     options={options}
