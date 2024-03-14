@@ -6,6 +6,8 @@ import { Link } from "react-router-dom"
 
 export default function Header () {
     const {loggedInUser} = useContext(UserContext)
+    const {loggedInUserObj} = useContext(UserContext)
+    
     
     return (
         <section className="main-header">
@@ -14,8 +16,8 @@ export default function Header () {
                 <button>Add article</button>
             </div>
             <div>
-                {/* <img src={userImg} width="50px" alt="user avatar" /> */}
-                <p>{loggedInUser}</p>
+                <img src={loggedInUserObj.avatar_url} width="50px" alt="user avatar" />
+                <p>{loggedInUserObj.name}</p>
                 <Link to="/login"><span className="bold-text">Login</span></Link>
             </div>
         </section>

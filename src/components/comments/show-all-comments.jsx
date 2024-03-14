@@ -10,8 +10,7 @@ export function ShowAllComments () {
     const [isFetching, setIsFetching] = useState(true)
     const [tempComment, setTempComment] = useState("")
     const articleId = useParams().article_id
-    const {loggedInUser} = useContext(UserContext)
-    // console.log(loggedInUser, "-----user in the comments");
+    const {loggedInUserObj} = useContext(UserContext)
 
     useEffect(() => {
         getAllComments(articleId)
@@ -23,17 +22,13 @@ export function ShowAllComments () {
 
     function handleSubmit (event) {
         event.preventDefault()
-        // console.log(tempComment, "when submitted");
-        postComment(articleId, loggedInUser, tempComment)
+        postComment(articleId, loggedInUserObj.username, tempComment)
         .then((data)=>{
-            // console.log(data, "----in comments from api");
             setTempComment("")
-
             setAllComments((currComments) => {
                 return [data, ...currComments]
             })
         })
-
     }
 
     if (isFetching) {
@@ -48,23 +43,23 @@ export function ShowAllComments () {
         <section className="comments-container">
             <form onSubmit={(event) => {handleSubmit(event)}} className="submit-comments">
                 <label htmlFor="add-comment">Add a comment</label>
-                <textarea multiline="true" id="add-comment" type="text" value={tempComment} onChange={(event) => {setTempComment(event.target.value)}}/>
+                <textarea multiline="true" id="add-comment" type="text" required value={tempComment} onChange={(event) => {setTempComment(event.target.value)}}/>
                 <button type="submit">Add</button>
             </form>
         <ul>
-                {allComments.map((comment) => {
-                    return (
-                        <div key={comment.comment_id} className="comment-card">
-                            <div>
-                                <p><span className="bold-text">{comment.author}</span>, {dateToLocal(comment.created_at)}</p>
-                                <p>Votes: {comment.votes}</p>
-                            </div>
-                            <p>{comment.body}</p>
-                            <p>{}</p>
-                            {/* <button>Delete Comment</button> */}
+            {allComments.map((comment) => {
+                return (
+                    <div key={comment.comment_id} className="comment-card">
+                        <div>
+                            <p><span className="bold-text">{comment.author}</span>, {dateToLocal(comment.created_at)}</p>
+                            <p>Votes: {comment.votes}</p>
                         </div>
-                    )
-                })}
+                        <p>{comment.body}</p>
+                        <p>{}</p>
+                        {/* <button>Delete Comment</button> */}
+                    </div>
+                )
+            })}
         </ul>
         </section>
     )

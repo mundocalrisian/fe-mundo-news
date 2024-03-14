@@ -45,7 +45,7 @@ export default function SingleArticle () {
     if (isFetching) {
         return (
         <div>
-            <p>Fetching articles...</p>
+            <p>Fetching article...</p>
         </div>
         ) 
     }

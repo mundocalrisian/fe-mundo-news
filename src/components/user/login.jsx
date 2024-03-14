@@ -4,63 +4,56 @@ import './login.css'
 import { getAllUsers } from "../../utils/api";
 
 export function Login () {
-    const [allUsers, setAllUsers] = useState([])
     const [tempUser, setTempUser] = useState("")
-    const [isValidUser, setIsValidUser] = useState(false)
+    const [allUsers, setAllUsers] = useState([])
+    const [allUsernames, setAllUsernames] = useState([])
+    const {loggedInUserObj} = useContext(UserContext)
+    const {setLoggedInUserObj} = useContext(UserContext)
     const [isErrorHidden, setIsErrorHidden] = useState(true)
-    const loggedInUser = useContext(UserContext).loggedInUser
-    const setLoggedInUser = useContext(UserContext).setLoggedInUser
+    const [loginSuccessful, setLoginSuccessful] = useState(loggedInUserObj.name !== 'Guest')
 
     useEffect(() => {
         getAllUsers()
         .then((results) => {
-            const usernames = results.map((user) => user.username)
-            setAllUsers(usernames)
+            setAllUsers(results)
+            setIsErrorHidden(true)
+            const usernames = results.map((user) => {
+                return user.username
+            })
+            setAllUsernames(usernames)
         })
-    }, [setLoggedInUser])
+    }, [])
 
     function handleSubmit (event) {
-        console.log(tempUser, "--when submitted");
         event.preventDefault()
-        // true
-        if (allUsers.includes(tempUser)){
-            setLoggedInUser(tempUser)
-            setIsValidUser(true)
+        if (allUsernames.includes(tempUser)){
+            allUsers.forEach((user) => {
+                if (user.username === tempUser) {
+                    setLoggedInUserObj(user)
+                }
+            })
             setIsErrorHidden(true)
+            setLoginSuccessful(true)
             setTempUser("")
         } else {
-        // false
             setIsErrorHidden(false)
-            setIsValidUser(false)
         }
     }
-    
 
     return (
         <>
-            <div className="login-container">
-                <h2>Login page</h2>
-                <p>Current user is {loggedInUser}</p>
-                <form onSubmit={(event)=>{handleSubmit(event)}}>
-                    <label htmlFor="user-input">Username</label>
-                    <input type="text" value={tempUser} id="user-input" onChange={(event) => {console.log(event.target.value); setTempUser(event.target.value)}}/>
-                    <button type="submit">Login</button>
-                    <p className="error-text" hidden={isErrorHidden}>Please enter a valid username</p>
-                </form>
-            </div>
+        <div className="login-container">
+            <h2>Login page</h2>
+            <form onSubmit={(event)=>{handleSubmit(event)}}>
+                <label htmlFor="user-input">Username</label>
+                <input type="text" value={tempUser} id="user-input" onChange={(event) => {setTempUser(event.target.value)}}/>
+                <button type="submit">Login</button>
+                <p className="error-text" hidden={isErrorHidden}>Please enter a valid username</p>
+                <p hidden={!loginSuccessful}>Welcome {loggedInUserObj.name}!</p>
+            <img src={loggedInUserObj.avatar_url} width="100px" alt="" />
+            </form>
+        </div>
         </>
     )
 }
 
-// call /api/users and see if name exists in the array DONE
-// if so, then log in and setLoggedInUser DONE
-// if not then display user not listed DONE
-
-// then set condtional only allowing vote if user is logged in and not guest
-// then use the logged user to input author field for comments body
-// comment field should be required
-// body should look like - 
-// {"author": "icellusedkars", "body": "We will see about that!"}
-// comments are returned with most recent first 
-// render optimistically
-// give some sort of successfull popup?
