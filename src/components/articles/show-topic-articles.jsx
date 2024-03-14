@@ -3,32 +3,31 @@ import { getTopicArticles } from "../../utils/api";
 import { ShowArticleCard } from "./show-article-card";
 import { useParams } from "react-router-dom";
 import { ShareButtons } from "../share/share-buttons";
-import { SortArticles } from "./sort-articles";
 import Select from 'react-select'
 import { sortByCommentCountAsc, sortByCommentCountDesc, sortByCreatedAsc, sortByCreatedDesc, sortByVotesAsc, sortByVotesDesc } from "../../utils/sort-by"
 
 export default function ShowTopicArticles ({allTopics}) {
     const [topicArticles, setTopicArticles] = useState([])
     const [isFetching, setIsFetching] = useState(true)
-    const [sortByOption, setSortByOption] = useState({value: 'DateDesc', label: 'Date created (Descending)'})
+    const [sortByOption, setSortByOption] = useState({value: 'DateDesc', label: 'Sort by most recent'})
     // console.log(sortByOption, "sortby");
 
     const topic = useParams().topic
 
     const options = [
-        {value:"DateAsc", label: "Date created (Ascending)"}, 
-        {value:"DateDesc", label: "Date created (Descending)"}, 
-        {value:"CommentsAsc", label: "Number of Comments (Ascending)"}, 
-        {value:"CommentsDesc", label: "Number of Comments (Descending)"}, 
-        {value:"VotesAsc", label: "Number of Votes (Ascending)"}, 
-        {value:"VotesDesc", label: "Number of Votes (Descending)"}
+        {value:"DateDesc", label: "Sort by most recent"}, 
+        {value:"DateAsc", label: "Sort by oldest"}, 
+        {value:"CommentsDesc", label: "Sort by most number of comments"}, 
+        {value:"CommentsAsc", label: "Sort by least number of comments"}, 
+        {value:"VotesDesc", label: "Sort by most number of votes"}, 
+        {value:"VotesAsc", label: "Sort by least number of votes"}, 
     ]
     
     useEffect(() => {
         getTopicArticles(topic)
         .then((data) => {
             data.forEach((article) => {
-            article.created_at = Date.parse(article.created_at)
+                article.created_at = Date.parse(article.created_at)
             })
             setTopicArticles(data)
             setIsFetching(false)
