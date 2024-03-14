@@ -57,4 +57,12 @@ export function patchCommentVote (articleId, vote) {
     })
 }
 
+export function deleteComment (commentId) {
+    return ncNewsApi.delete(`/comments/${commentId}`)
+    .then((result)=>{
+        console.log(result);
+        return result.status
+    })
+}
+
 
