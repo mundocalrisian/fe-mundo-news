@@ -21,8 +21,7 @@ export default function ShowAllArticles ({allTopics}) {
             <p>Fetching articles...</p>
         </div>
         ) 
-    }
-    else {
+    } else {
     return (
         <section className="articles-container">
             <select name="Sort By" id="">

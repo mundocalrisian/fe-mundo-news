@@ -1,0 +1,31 @@
+/* .share-buttons {
+    
+} */
+.share-button {
+    border: none;
+    border-radius: 1rem;
+    /* color: #fff; */
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin: 0 0.25rem 0 0.25rem;
+    
+}
+.email {
+    background-color: #EC6F4C;
+}
+.facebook {
+   background-color: #0A66FF;
+}
+.instagram {
+    background-color: #962fbf;
+}
+.twitter {
+   background-color: #eef5f9;
+}
+.linkedin {
+   background-color: #0077b5;
+}
+.whatsapp {
+   background-color: #25d366;
+}
