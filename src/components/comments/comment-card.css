@@ -7,6 +7,9 @@
     border-radius: 0.4rem;
     background-color: rgb(206, 239, 250);
     color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start
 }
 
 .submit-comments > * {
@@ -17,7 +20,7 @@
     border: 1px;
     border-radius: 0.4rem;
     height: 1.4rem;
-    width: 50%;
+    width: 40%;
 }
 
 .comment-card {

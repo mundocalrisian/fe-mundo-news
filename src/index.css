@@ -38,3 +38,8 @@ a {
 .bold-text {
     font-weight: bold;
 }
+
+.error-text {
+    color: rgb(236, 96, 96);
+    font-weight: bold;
+}

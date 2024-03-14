@@ -1,17 +1,18 @@
 import { useContext } from "react";
 import { capitaliseFirstLetter } from "../utils/utils";
+import { Link } from "react-router-dom";
 
 export function Sidebar ({allTopics}) {
 
     return (
         <section className="sidebar">
             <ul className="sidebar-list">
-                <p><a href="/articles">All</a></p>
+                <p><Link to ="/articles">All</Link></p>
                 
                 {allTopics.map((topic) => {
                     return (
                         <p key={topic.slug}>
-                            <a href={`/articles/${topic.slug}`}>{capitaliseFirstLetter(topic.slug)}</a>
+                            <Link to={`/articles/${topic.slug}`}>{capitaliseFirstLetter(topic.slug)}</Link>
                         </p>
                     )
                 })}
