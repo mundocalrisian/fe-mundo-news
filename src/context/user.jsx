@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import placeHolderImg from "../assets/user-placeholder.png"
+import placeHolderImg from "../assets/user-placeholder.svg"
 
 export const UserContext = createContext()
 

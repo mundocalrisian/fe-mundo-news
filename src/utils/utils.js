@@ -8,3 +8,11 @@ export function dateToLocal (dateToChange) {
 	const formattedDate = new Date(dateWithoutZ)
 	return formattedDate.toLocaleString()
 }
+
+export function dateToUnix (dateToChange) {
+    return Date.parse(dateToChange)
+}
+
+export function dateUnixToLocal (dateToChange) {
+    return new Date(dateToChange).toLocaleString()
+}
