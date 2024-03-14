@@ -1,4 +1,4 @@
-import "./comment-card.css"
+import "./comments.css"
 import { useContext, useEffect, useState } from "react"
 import { deleteComment, getAllComments, postComment } from "../../utils/api"
 import { useParams } from "react-router-dom"
@@ -78,7 +78,7 @@ export function ShowAllComments () {
     return (
         <section className="comments-container">
             <form onSubmit={(event) => {handleSubmit(event)}} className="submit-comments">
-                <label htmlFor="add-comment">Add a comment</label>
+                <label htmlFor="add-comment"><span className="bold-text">Add a comment</span></label>
                 <textarea multiline="true" id="add-comment" type="text" required value={tempComment} onChange={(event) => {setTempComment(event.target.value)}}/>
                 <button type="submit">Add</button>
             </form>

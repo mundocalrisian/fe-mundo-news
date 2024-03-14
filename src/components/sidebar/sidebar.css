@@ -1,17 +1,17 @@
 .sidebar {
     position: absolute;
-    top: 200px;
+    top: 203px;
     left: -8.5rem;
     height: 100vh;
     width: 8.5rem;
     transition: left 0.3s ease-in-out;
     background-color: #ec8c4c;
-    border-radius: 0.4rem;
+    border-radius: 0 0.4rem 0.4rem 0;
 }
 
 .sidebar-toggle {
     position: absolute;
-    top: 0.2rem;
+    top: 0rem;
     right: -55px;
     height: 30px;
     width: 30px;

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { getArticleById } from "../../utils/api";
 import { capitaliseFirstLetter, dateToLocal } from "../../utils/utils";
@@ -62,7 +62,7 @@ export default function SingleArticle () {
             </div>
         <section className="article-card">
             <h2>{soloArticle.title}</h2>
-                <p>Created by <span className="bold-text">'User'</span> on {dateToLocal(`${soloArticle.created_at}`)} in <a href={`/articles/${soloArticle.topic}`}><span className="bold-text">{capitaliseFirstLetter(`${soloArticle.topic}`)}</span></a></p>
+                <p>Created by <span className="bold-text">{soloArticle.author}</span> on {dateToLocal(`${soloArticle.created_at}`)} in <Link to={`/articles/${soloArticle.topic}`}><span className="bold-text">{capitaliseFirstLetter(`${soloArticle.topic}`)}</span></Link></p>
                 <p> </p>
             <img src={soloArticle.article_img_url} alt="" />
             <p>{soloArticle.body}</p>
