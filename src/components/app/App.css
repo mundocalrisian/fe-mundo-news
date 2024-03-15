@@ -51,41 +51,56 @@
     /* width: auto\9; */
     border: 1px solid;
     border-radius: 0.4rem;
-    
 }
 
 .article-card-comments {
     height: 3rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 0.6rem;
     margin-bottom: 0;
-    font-size: smaller;
+    /* font-size: smaller; */
 }
 
 .article-card-votes {
     display: flex;
+    justify-content: space-between;
     background-color: #eee;
     border: 0;
     height: 2.4rem;
     border-radius: 2rem;
     color: black;
+    width: 150px;
+    position: relative;
     
 }
 .article-card-votes img{
     width: 2rem;
     padding: 0.2rem;
+    /* margin-right: 1rem; */
     border: 0px solid;
 }
 .article-card-votes p {
-    margin-bottom: 0;   
+    position: absolute;
+    top: -0.4rem  ;
+    right: 2.4rem;
+    
+
 }
+.votes-text{
+/* margin: 1rem; */
+/* padding: 1 rem; */
+/* position: absolute;
+bottom: -20px; */
+
+}
+
 .article-card-votes input {
     padding: 0.2rem;   
 }
 
 .article-card-votes > * {
-    /* margin-left: 1rem; */
     border: 0px;
 }
 

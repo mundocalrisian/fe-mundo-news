@@ -18,10 +18,10 @@ export default function Header () {
             </div> */}
             <div className="header-user-box">
                 <img src={loggedInUserObj.avatar_url} width="50px" alt="user avatar" />
-                <div className="header-user-text">
                     <p>{loggedInUserObj.name}</p>
                     <Link to="/login"><span className="bold-text">Login</span></Link>
-                </div>
+                {/* <div className="header-user-text">
+                </div> */}
             </div>
         </section>
     )

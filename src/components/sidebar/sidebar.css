@@ -2,10 +2,10 @@
     position: absolute;
     top: 203px;
     left: -8.5rem;
-    height: 100vh;
+    height: 250vh;
     width: 8.5rem;
     transition: left 0.3s ease-in-out;
-    background-color: #ec8c4c;
+    background-color: #EA7D34;
     border-radius: 0 0.4rem 0.4rem 0;
 }
 

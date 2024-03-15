@@ -104,7 +104,7 @@ export default function SingleArticle () {
                 <p>Comments: {soloArticle.comment_count}</p>
                 <form className="article-card-votes">
                     <input disabled={isUpClicked} onClick={(event) => { handleUpVote(articleId); setIsUpClicked(true)}} type="image" src={upArrow} name="up-vote" method="post"/>
-                    <p>&#160;Votes: {articleVotes} &#160;</p>
+                    <p className="votes-text">Votes: {articleVotes} </p>
                     <input disabled={isDownClicked} onClick={(event) => {handleDownVote(articleId); setIsDownClicked(true)}} type="image" src={downArrow} name="down-vote" method="post"/>
                 </form>
             </div>

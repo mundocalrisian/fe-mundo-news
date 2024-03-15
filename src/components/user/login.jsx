@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/user";
+import { SidebarContext } from "../../context/sidebar";
 import './login.css'
 import { getAllUsers } from "../../utils/api";
 
@@ -9,8 +10,11 @@ export function Login () {
     const [allUsernames, setAllUsernames] = useState([])
     const {loggedInUserObj} = useContext(UserContext)
     const {setLoggedInUserObj} = useContext(UserContext)
+    const {isSidebarOpen} = useContext(SidebarContext)
     const [isErrorHidden, setIsErrorHidden] = useState(true)
     const [loginSuccessful, setLoginSuccessful] = useState(loggedInUserObj.name !== 'Guest')
+
+    const articlesContainerClass = !isSidebarOpen ? "articles-container open" : "articles-container"
 
     useEffect(() => {
         getAllUsers()
@@ -41,19 +45,25 @@ export function Login () {
     }
 
     return (
-        <>
-        <div className="login-container">
-            <h2>Login page</h2>
-            <form onSubmit={(event)=>{handleSubmit(event)}}>
-                <label htmlFor="user-input">Username</label>
-                <input type="text" value={tempUser} id="user-input" onChange={(event) => {setTempUser(event.target.value)}}/>
-                <button type="submit">Login</button>
-                <p className="error-text" hidden={isErrorHidden}>Please enter a valid username</p>
-                <p hidden={!loginSuccessful}>Welcome {loggedInUserObj.name}!</p>
-            <img src={loggedInUserObj.avatar_url} width="100px" alt="" />
-            </form>
-        </div>
-        </>
+
+        <section className={articlesContainerClass}>
+            <div className="login-container">
+                {/* <h3>Please enter your <br />username below</h3> */}
+                <form onSubmit={(event)=>{handleSubmit(event)}}>
+                    <label htmlFor="user-input">Please enter <br />your username</label>
+                    <br />
+                    <input type="text" value={tempUser} id="user-input" onChange={(event) => {setTempUser(event.target.value)}}/>
+                    <br />
+                    <button type="submit">Login</button>
+                    <p className="error-text" hidden={isErrorHidden}>Please enter a valid username</p>
+                    <p hidden={!loginSuccessful}>Welcome {loggedInUserObj.name}!</p>
+                    <div className="user-image">
+                        <img src={loggedInUserObj.avatar_url} width="100px" alt="" />
+                    </div>
+                </form>
+            </div>
+        </section>
+        
     )
 }
 

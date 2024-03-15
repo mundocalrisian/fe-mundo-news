@@ -77,8 +77,10 @@ export default function ShowAllArticles ({allTopics}) {
     } else {
     return (
         <section className={articlesContainerClass}>
+            <label htmlFor="sort-by-dropdown"></label>
             <Select 
                     className="sort-by-dropdown" 
+                    id="sort-by-dropdown"
                     options={options}
                     defaultValue={sortByOption}
                     onChange={setSortByOption}
@@ -87,8 +89,8 @@ export default function ShowAllArticles ({allTopics}) {
                 {allArticles.map((article) => {
                     return (
                         <div key={article.article_id} className="article-card">
-                        <ShowArticleCard article={article}/>
-                    </div>
+                            <ShowArticleCard article={article}/>
+                        </div>
                 )
             })}
         </section>

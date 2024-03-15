@@ -43,13 +43,13 @@ export function ShowArticleCard ({article}) {
     return (
         <>
             <h3><Link to={`/article/${article.article_id}`}>{article.title}</Link></h3>
-            <Link to={`/article/${article.article_id}`}><img src={article.article_img_url} alt="" /></Link>
+            <Link to={`/article/${article.article_id}`}><img src={article.article_img_url} alt={`relating to ${article.topic}`} /></Link>
             <div className="article-card-comments">
                 <p>Comments {article.comment_count} &#160;&#160;<a href={`/article/${article.article_id}`}>(view)</a></p>
                 <form className="article-card-votes">
-                    <input disabled={isUpClicked} onClick={(event) => { handleUpVote(article.article_id); setIsUpClicked(true)}} type="image" src={upArrow} name="up-vote" method="post"/>
+                    <input disabled={isUpClicked} onClick={(event) => { handleUpVote(article.article_id); setIsUpClicked(true)}} type="image" src={upArrow} alt="down vote arrow" name="up-vote" method="post"/>
                     <p>&#160;Votes: {articleVotes} &#160;</p>
-                    <input disabled={isDownClicked} onClick={(event) => {handleDownVote(article.article_id); setIsDownClicked(true)}} type="image" src={downArrow} name="down-vote" method="post"/>
+                    <input disabled={isDownClicked} onClick={(event) => {handleDownVote(article.article_id); setIsDownClicked(true)}} type="image" src={downArrow} alt="down vote arrow" name="down-vote" method="post"/>
                 </form>
             </div>
             <div hidden={isVotesErrorHidden} 

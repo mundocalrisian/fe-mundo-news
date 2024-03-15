@@ -21,7 +21,7 @@ const {setIsSidebarOpen} = useContext(SidebarContext)
         <>
             {/* <button>Click here</button> */}
         <section id="mySidebar" className={sidebarClass}>
-            <input type="image" src={menuIcon} onClick={handleViewSidebar} className="sidebar-toggle"></input>
+            <input type="image" src={menuIcon} alt="menu icon to expand topics sidebar"onClick={handleViewSidebar} className="sidebar-toggle"></input>
             <div>
             <a href={void(0)} className="closebtn" onClick={handleViewSidebar}>×</a>
             <h2 className="sidebar-header">TOPICS</h2>
