@@ -71,8 +71,8 @@ export default function ShowTopicArticles ({allTopics}) {
 
     if (isFetching) {
         return (
-            <div>
-                <p>Fetching articles...</p>
+            <div className="fetching-container">
+                <p>Hold tight, fetching articles...</p>
             </div>
         )
     } else {

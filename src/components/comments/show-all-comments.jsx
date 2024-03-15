@@ -69,8 +69,8 @@ export function ShowAllComments () {
 
     if (isFetching) {
         return (
-        <div>
-            <p>Fetching comments...</p>
+        <div className="fetching-container">
+            <p>Hold tight, looking for comments...</p>
         </div>
         ) 
     }

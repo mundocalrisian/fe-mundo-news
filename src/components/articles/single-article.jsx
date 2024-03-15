@@ -49,8 +49,8 @@ export default function SingleArticle () {
 
     if (isFetching) {
         return (
-        <div>
-            <p>Fetching article...</p>
+        <div className="fetching-container">
+            <p>Hold tight, fetching article...</p>
         </div>
         ) 
     }
