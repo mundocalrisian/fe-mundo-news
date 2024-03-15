@@ -9,9 +9,9 @@ body {
 }
 
 .grid-container {
-    display: grid;
+    /* display: grid;
     grid-template-columns: 120px auto;
-    grid-template-rows: 120px  auto;
+    grid-template-rows: 120px  auto; */
 }
 
 h1 {
@@ -31,7 +31,7 @@ select {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none; 
     color: #eee;
 }
 
