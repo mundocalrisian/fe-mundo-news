@@ -42,6 +42,7 @@
     text-align: center;
     color: black;
     background-color: #A3DFF5;
+    height: auto;
     /* background-image: linear-gradient(to bottom right, rgba(164, 223, 245, 100), #eee); */
 }
 
@@ -65,8 +66,8 @@
 }
 
 .article-card-votes {
-    /* display: flex; */
-    /* flex-flow: unset; */
+    display: flex;
+    flex-flow: unset;
     justify-content: space-between;
     background-color: #eee;
     border: 0;
