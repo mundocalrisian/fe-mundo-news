@@ -9,6 +9,7 @@ import Home from '../home'
 import SingleArticle from '../articles/single-article'
 import { Login } from '../user/login'
 import ShowTopicArticles from '../articles/show-topic-articles'
+import { ErrorPage } from '../errors/error'
 
 function App () {
   const [allUsers, setAllUers] = useState([])
@@ -30,6 +31,7 @@ function App () {
           <Route path='/articles/:topic' element={<ShowTopicArticles allTopics={allTopics}/>} />
           <Route path='/article/:article_id' element={<SingleArticle/>}/>
           <Route path='/login' element={<Login/>}/>
+          <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </section>  
   )

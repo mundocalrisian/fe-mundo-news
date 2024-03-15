@@ -7,7 +7,10 @@ import { patchCommentVote } from "../../utils/api";
 import upArrow from '../../assets/arrow-round-top-icon.svg'
 import downArrow from '../../assets/arrow-round-bottom-icon.svg'
 import { SidebarContext } from "../../context/sidebar";
+import { UserContext } from "../../context/user"
 import { Login } from "../user/login";
+
+
 
 
 export default function SingleArticle () {
@@ -16,11 +19,16 @@ export default function SingleArticle () {
     const [articleVotes, setArticleVotes] = useState(soloArticle.votes)
     const [isUpClicked, setIsUpClicked] = useState(false)
     const [isDownClicked, setIsDownClicked] = useState(false)
+    const [isErrorHidden, setIsErrorHidden] = useState(true)
+    const [isVotesErrorHidden, setIsVotesErrorHidden] = useState(true)
+    const {loggedInUserObj} = useContext(UserContext)
     const {isSidebarOpen} = useContext(SidebarContext)
 
     const articlesContainerClass = !isSidebarOpen ? "articles-container open" : "articles-container"
     
     const articleId = useParams().article_id
+
+    const loggedInUsername = loggedInUserObj.username
     
     useEffect(() => {
         getArticleById(articleId)
@@ -28,33 +36,59 @@ export default function SingleArticle () {
             setSoloArticle(article)
             setArticleVotes(article.votes)
             setIsFetching(false)
+            setIsErrorHidden(true)
+        })
+        .catch((err) => {
+        console.log(err, "error in solo article");
+        setIsFetching(false)
+        setIsErrorHidden(false)
         })
     }, [])
 
     function handleUpVote(article_id) {
         event.preventDefault()
-        patchCommentVote(article_id, 1)
-        .then((result) => {
-            setArticleVotes(result.votes)
-        })
+        if (loggedInUsername !== 'Guest'){
+            patchCommentVote(article_id, 1)
+            .then((result) => {
+                setArticleVotes(result.votes)
+                setIsVotesErrorHidden(true)
+            })
+        } else {
+            setIsVotesErrorHidden(false)
+        }
     }
 
     function handleDownVote (article_id) {
         event.preventDefault()
-        patchCommentVote(article_id, -1)
-        .then((result) => {
-            setArticleVotes(result.votes)
-        })
+        if (loggedInUsername !== 'Guest'){
+            patchCommentVote(article_id, -1)
+            .then((result) => {
+                setArticleVotes(result.votes)
+            })
+        } else {
+            setIsVotesErrorHidden(false)
+        }
     }
 
     if (isFetching) {
         return (
-        <div className="fetching-container">
-            <p>Hold tight, fetching article...</p>
-        </div>
+            <section className={articlesContainerClass}>
+                <div className="fetching-container">
+                    <p>Hold tight, fetching article...</p>
+                </div>
+            </section>
         ) 
     }
-    else {
+    if (!isErrorHidden){
+        return (
+            <section className={articlesContainerClass}>
+                <div hidden={isErrorHidden} className="error-container">
+                    <p>Sorry, it seems that article doesn't exist</p>
+                </div>
+            </section>
+        )
+    }
+    if (!isFetching && isErrorHidden){
     return (
         <section className={articlesContainerClass}>
             <div className="jump-to-header">
@@ -73,6 +107,10 @@ export default function SingleArticle () {
                     <p>&#160;Votes: {articleVotes} &#160;</p>
                     <input disabled={isDownClicked} onClick={(event) => {handleDownVote(articleId); setIsDownClicked(true)}} type="image" src={downArrow} name="down-vote" method="post"/>
                 </form>
+            </div>
+            <div hidden={isVotesErrorHidden} 
+                className="comment-error">
+                <p><span className="error-text">Please log in to vote</span></p>
             </div>
         </section>
         <ShowAllComments />
