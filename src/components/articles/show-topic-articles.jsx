@@ -6,10 +6,12 @@ import { ShareButtons } from "../share/share-buttons";
 import Select from 'react-select'
 import { sortByCommentCountAsc, sortByCommentCountDesc, sortByCreatedAsc, sortByCreatedDesc, sortByVotesAsc, sortByVotesDesc } from "../../utils/sort-by"
 import { SidebarContext } from "../../context/sidebar";
+import { ErrorPage } from "../errors/error";
 
 export default function ShowTopicArticles ({allTopics}) {
     const [topicArticles, setTopicArticles] = useState([])
     const [isFetching, setIsFetching] = useState(true)
+    const [isErrorHidden, setIsErrorHidden] = useState(true)
     const [sortByOption, setSortByOption] = useState({value: 'DateDesc', label: 'Sort by most recent'})
     const {isSidebarOpen} = useContext(SidebarContext)
 
@@ -34,6 +36,19 @@ export default function ShowTopicArticles ({allTopics}) {
             })
             setTopicArticles(data)
             setIsFetching(false)
+            setIsErrorHidden(true)
+            console.log(isErrorHidden, "---- after API call");
+        })
+        .catch((err) => {
+            console.log(err, "<----- error in topic articles");
+            if (err.response.status === 400) {
+                setIsFetching(false)
+                setIsErrorHidden(false)
+            }
+            if (err.response.status === 404) {
+                setIsFetching(false)
+                setIsErrorHidden(false)
+            }
         })
     }, [topic])
 
@@ -71,12 +86,16 @@ export default function ShowTopicArticles ({allTopics}) {
 
     if (isFetching) {
         return (
-            <div className="fetching-container">
-                <p>Hold tight, fetching articles...</p>
-            </div>
+            <section className={articlesContainerClass}>
+                <div className="fetching-container">
+                    <p>Hold tight, fetching articles...</p>
+                </div>
+            </section>
         )
     } else {
         return (
+            <>
+            
             <section className={articlesContainerClass}>
                 <Select 
                     className="sort-by-dropdown" 
@@ -85,6 +104,9 @@ export default function ShowTopicArticles ({allTopics}) {
                     onChange={setSortByOption}
                 />
                 {/* <ShareButtons /> */}
+                <div hidden={isErrorHidden} className="error-container">
+                    <p>Sorry, it seems that topic doesn't exist</p>
+                </div>
                 {topicArticles.map((article) => {
                     return (
                         <div key={article.article_id} className="article-card">
@@ -93,6 +115,7 @@ export default function ShowTopicArticles ({allTopics}) {
                     )
                 })}
             </section>
+            </>
         )
     }
 

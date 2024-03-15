@@ -82,7 +82,7 @@ export function ShowAllComments () {
                 <textarea multiline="true" id="add-comment" type="text" required value={tempComment} onChange={(event) => {setTempComment(event.target.value)}}/>
                 <button type="submit">Add</button>
             </form>
-            <p hidden={isCommentErrorHidden}><span className="error-text">Please log in to add a comment</span></p>
+            <p hidden={isCommentErrorHidden} className="comment-error"><span className="error-text">Please log in to add a comment</span></p>
         <ul>
             {allComments.map((comment) => {
                 return (
@@ -94,7 +94,7 @@ export function ShowAllComments () {
                         <p>{comment.body}</p>
                         <p>{}</p>
                         <button onClick={(event) => {console.log(comment.comment_id); handleDelete(event)}}  value={comment.comment_id} hidden={loggedInUsername !== comment.author}>Delete Comment</button>
-                        {comment.comment_id === Number(commentIdToDelete) ? <p hidden={isDeleteErrorHidden}><span className="error-text">Sorry, something went wrong, please try to delete again</span></p> : <></>}
+                        {comment.comment_id === Number(commentIdToDelete) ? <p hidden={isDeleteErrorHidden} className="comment-error"><span className="error-text">Sorry, something went wrong, please try to delete again</span></p> : <></>}
                     </div>
                 )
             })}

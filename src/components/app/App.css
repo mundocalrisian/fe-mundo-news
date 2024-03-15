@@ -1,7 +1,21 @@
 .fetching-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2em;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
+    padding-top: 2rem;
+    margin-left: 8.5rem;
+}
+.fetching-container.open{
+    margin-left: 0;
+}
+
+.error-container {
+    text-align: center;
+    padding-top: 2rem;
+    margin-left: 8.5rem;
+}
+.error-container.open{
+    margin-left: 0;
 }
 
 

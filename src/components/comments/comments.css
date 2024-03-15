@@ -39,3 +39,7 @@
 .comment-card p {
     margin: 0.5rem;
 }
+
+.comment-error {
+    text-align: center;
+}
