@@ -1,5 +1,4 @@
 import "./header.css"
-import userImg from "../../assets/user-placeholder.svg"
 import { useContext, useEffect } from "react"
 import { UserContext } from "../../context/user"
 import { Link } from "react-router-dom"
