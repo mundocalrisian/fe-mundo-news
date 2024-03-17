@@ -11,7 +11,7 @@ export default function Header () {
     
     return (
         <section className="main-header">
-            <h1><Link to="/">NC NEWS</Link></h1>
+            <h1><Link to="/">MUNDO NEWS</Link></h1>
             {/* <div>
                 <button>Add article</button>
             </div> */}
