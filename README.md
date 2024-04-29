@@ -16,7 +16,7 @@ https://github.com/mundocalrisian/be-nc-news.git
 
 To start using this project, please first clone the repository from GitHub using the following command
 
-    git clone https://github.com/mundocalrisian/fe-nc-news.git
+    git clone https://github.com/mundocalrisian/fe-mundo-news.git
 
 Next you'll need to install the dependencies by entering the following into the terminal
 
