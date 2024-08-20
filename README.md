@@ -37,12 +37,12 @@ https://nc-news-b3bj.onrender.com/api/users
 -   NodeJS - https://nodejs.org/en (minimum version 20.10.0)
 -   npm - https://www.npmjs.com/ (minimum version 10.5.0)
 -   Vite - https://vitejs.dev/ (minimum version 5.1.4)
--   Axios - https://axios-http.com/ (minimum version 1.6.7)
+-   Axios - https://axios-http.com/ (minimum version 1.7.4)
 -   React - https://react.dev/ (minimum version 18.2.0)
 -   react-select - https://react-select.com/ (minimum version 5.8.0)
 -   react-router - https://reactrouter.com/en/main (minimum version6.22.3)
-    react-select - https://www.npmjs.com/package/react-share(minimum version 5.8.0)
-    react-share - https://www.npmjs.com/package/react-share(minimum version 5.1.0)
+-    react-select - https://www.npmjs.com/package/react-share(minimum version 5.8.0)
+-    react-share - https://www.npmjs.com/package/react-share(minimum version 5.1.0)
 
 ## Authors
 - **mundocalrisian** - https://github.com/mundocalrisian/
