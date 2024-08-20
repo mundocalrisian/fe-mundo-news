@@ -26,9 +26,9 @@ Then to host the page locally, enter
 
     npm run dev
 
-*Please note - on loading the site for the first time, you may notice a bit of a delay in the articles loading. This is normal whilst the database spins up having not been used for a while.*
+*Please note - on loading the site for the first time, you may notice a bit of a delay in the articles loading. This is normal whilst the instance spins up having not been used for a while and is a limitation of the free tier from [Render](https://render.com/).*
 
-In order to use some of the features youy will need to be logged in to the site. The login only accepts usernames that are listed in the database which can be seen here - 
+In order to use some of the features you will need to be logged in to the site. The login only accepts usernames that are listed in the database which can be seen here - 
 
 https://nc-news-b3bj.onrender.com/api/users
 
